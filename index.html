@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .heading{
+            padding: 16px;
+            margin-bottom: 5px;
+            text-align: center;
+            font-size: 35px;
+            font-weight: 600;
+            border-bottom: 3px solid black;
+        }
+        .body-container{
+            justify-content: center;
+            padding-top: 15px;
+        }
+        .body{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0 5%;
+        }
+        .thumbnail-container{
+            margin: 3%;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            border: 2px solid black;
+            border-radius: 11px;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        .label{
+            font-size: 20px;
+            font-weight: 600;
+            padding: 5px;
+            text-decoration: none;
+        }
+        .label:hover{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        img{
+            padding: 0;
+            border-bottom: 2px solid black;
+            border-radius: 11px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="header-container">
+            <div class="heading">
+                GAME LOBBY!!!
+            </div>
+        </div>
+        <div class="body-container">
+            <div class="body" id="body"></div>
+        </div>
+    </div>
+    <script>
+        var games = [
+            {
+                name: "Flappy Bird",
+                url: "./flappy/index.html",
+                thumbnail: "./images/flappy_thumbnail.png"
+            },
+            {
+                name: "Pacman",
+                url: "./pacman/index.html",
+                thumbnail: "./images/pacman_thumbnail.png"
+            }
+        ];
+        var body = document.getElementById("body");
+        function add(details){
+            body.innerHTML += `
+                <div class="thumbnail-container">
+                    <a href="${details.url}">
+                        <img width="300" height="300" src="${details.thumbnail}"/>
+                    </a>
+                    <a href="${details.url}">
+                        <label class="label">${details.name}</label>
+                    </a>
+                </div>
+            `
+        }
+        function renderThumbnails(){
+            games.forEach((elem) => add(elem));
+        }
+        renderThumbnails();
+    </script>
+</body>
+</html>
